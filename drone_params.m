@@ -20,4 +20,22 @@ d = C_p*rho_A*D^5;            % drag factor
 
 % b = 6.317e-4;
 % d = 1.61e-4;
-%% MPC
+
+%% ss model
+T = 0.02;       % sampling time
+
+load('linearized_model.mat')
+A_num_c = double(subs(A_lin, [m_sym g_sym l_sym I_xx_sym I_yy_sym I_zz_sym], ...
+                             [m g l I_xx I_yy I_zz]));
+
+B_num_c = double(subs(B_lin, [m_sym g_sym l_sym I_xx_sym I_yy_sym I_zz_sym], ...
+                             [m g l I_xx I_yy I_zz]));
+
+C_num = eye(12);
+D_num = 0;
+
+% state spüace
+sys_c = ss(A_num_c, B_num_c, C_num, D_num);
+sys_d = c2d(sys_c, T);
+
+% Controllability
