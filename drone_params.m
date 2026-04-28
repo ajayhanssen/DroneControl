@@ -18,6 +18,9 @@ D = 0.15;                % blade diameter
 b = C_T*rho_A*D^4;            % thrust factor
 d = C_p*rho_A*D^5;            % drag factor
 
+K_dx = 0;
+K_dy = 0;
+K_dz = 0;
 % b = 6.317e-4;
 % d = 1.61e-4;
 
