@@ -1,10 +1,10 @@
-t = out.simout.Time
-x = out.simout.Data(:,1);
-y = out.simout.Data(:,2);
-z = out.simout.Data(:,3);
-phi = out.simout.Data(:,4);
-theta = out.simout.Data(:,5);
-psi = out.simout.Data(:,6);
+t = out.simout.Time;
+x = out.simout.Data(1,:,:);
+y = out.simout.Data(3,:,:);
+z = out.simout.Data(5,:,:);
+phi = out.simout.Data(7,:,:);
+theta = out.simout.Data(9,:,:);
+psi = out.simout.Data(11,:,:);
 
 axes( 'DataAspectRatio', [1 1 1], 'View', [37.5 30] )
 for i = 1:length(x)
@@ -15,6 +15,7 @@ for i = 1:length(x)
     plotframe( rot, trans )
 end
 
-xlim([-5 5])
-ylim([-5 5])
-zlim([0 10])
+grid on
+%xlim([-5 5])
+%ylim([-5 5])
+%zlim([0 10])
