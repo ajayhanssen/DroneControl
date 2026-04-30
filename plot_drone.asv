@@ -18,32 +18,24 @@ tform = hgtransform;
 set(h, 'Parent', tform);
 xlim([-2 2])
 ylim([-2 2])
-zlim([-2 2])
-xlabel('x'); ylabel('y'); zlabel('z');
+zlim([0 4])
 
-% bei NED: x=y, y=x, z=-z
-C = [0 1 0;
-     1 0 0;
-     0 0 -1];
+T_mat = [0 1 0 0
+         1 0 0 0
+         0 0 -1 ]
 
-for i = 1:length(t)
-    if mod(i,2) == 0
-
-        % pos conv
-        % drecks NED 2 ENU
-        pos = [y(i); x(i); -z(i)];
-
-        % rot conv
-        R_ned = eul2rotm([psi(i), theta(i), phi(i)], 'ZYX');
-        R = C * R_ned * C';
-
-        % transform mat
+for i =1:length(t)
+    if mod(i, 5) == 0
+        R = eul2rotm([phi(i), theta(i), psi(i)], 'XYZ');
+    
+        % Homogeneous transform
         T = eye(4);
         T(1:3,1:3) = R;
-        T(1:3,4) = pos;
-
+        T(1:3,4) = [x(i); y(i); z(i)];
+    
+        % Apply transform
         set(tform, 'Matrix', T);
-
+    
         drawnow
         if i > 1
             pause(t(i)-t(i-1))
@@ -51,3 +43,6 @@ for i = 1:length(t)
     end
 
 end
+ned2ecef
+
+ecef2enu
