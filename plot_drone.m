@@ -1,10 +1,10 @@
 t = out.simout.Time;
-x = out.simout.Data(:,1);
-y = out.simout.Data(:,2);
-z = out.simout.Data(:,3);
-phi = out.simout.Data(:,7);
-theta = out.simout.Data(:,8);
-psi = out.simout.Data(:,9);
+x = out.simout.Data(1,:,:);
+y = out.simout.Data(2,:,:);
+z = out.simout.Data(3,:,:);
+phi = out.simout.Data(7,:,:);
+theta = out.simout.Data(8,:,:);
+psi = out.simout.Data(9,:,:);
 
 TR = stlread("drohne_model.stl");
 
