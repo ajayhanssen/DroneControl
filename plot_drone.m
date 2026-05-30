@@ -16,9 +16,9 @@ view([45 45])
 
 tform = hgtransform;
 set(h, 'Parent', tform);
-xlim([-2 2])
-ylim([-2 2])
-zlim([-2 2])
+xlim([min(y)-1 max(y)+1])
+ylim([min(x)-1 max(x)+1])
+zlim([max(z)-1 min(z)+1])
 xlabel('x'); ylabel('y'); zlabel('z');
 
 % bei NED: x=y, y=x, z=-z
