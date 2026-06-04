@@ -1,10 +1,15 @@
-t = out.simout.Time;
-x = out.simout.Data(1,:,:);
-y = out.simout.Data(2,:,:);
-z = out.simout.Data(3,:,:);
-phi = out.simout.Data(7,:,:);
-theta = out.simout.Data(8,:,:);
-psi = out.simout.Data(9,:,:);
+outvar = out.simout1;
+
+t = outvar.Time;
+x = outvar.Data(1,:,:);
+x = reshape(x, [], 1);
+y = outvar.Data(2,:,:);
+y = reshape(y, [], 1);
+z = outvar.Data(3,:,:);
+z = reshape(z, [], 1);
+phi = outvar.Data(7,:,:);
+theta = outvar.Data(8,:,:);
+psi = outvar.Data(9,:,:);
 
 TR = stlread("drohne_model.stl");
 
@@ -18,8 +23,11 @@ tform = hgtransform;
 set(h, 'Parent', tform);
 xlim([min(y)-1 max(y)+1])
 ylim([min(x)-1 max(x)+1])
-zlim([max(z)-1 min(z)+1])
+zlim([-3 3])
 xlabel('x'); ylabel('y'); zlabel('z');
+
+hold on
+flownPath = animatedline('Color', 'r', 'LineWidth', 1.5, 'LineStyle', '-');
 
 % bei NED: x=y, y=x, z=-z
 C = [0 1 0;
@@ -32,6 +40,8 @@ for i = 1:length(t)
         % pos conv
         % drecks NED 2 ENU
         pos = [y(i); x(i); -z(i)];
+
+        addpoints(flownPath, pos(1), pos(2), pos(3));
 
         % rot conv
         R_ned = eul2rotm([psi(i), theta(i), phi(i)], 'ZYX');

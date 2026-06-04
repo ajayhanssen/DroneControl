@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:d="http://www.mathworks.com/blockgraphics" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="svg" width="430" height="302" d:options="PreserveAspect:On;Rotate:Off;Resize:FitToBlock;">
+
+	<g id="part_1" title="part_0" ie-ports="left:simulink*simulink*simulink*simulink,top:,right:simulink*simulink*simulink*simulink,bottom:">
+		<math id="equation" height="72.3" width="156.78" class="equation" style="font-size:43px; scalingFactors:0.7" x="136.61" y="73.85">
+			$$U_\mathrm{i} \Rightarrow \omega_\mathrm{i}
+			$$		</math>
+		<math id="equation_1" height="72.3" width="356.72" class="equation" style="font-size:43px; scalingFactors:0.7" x="57.64" y="163.5">
+			$$\omega_\mathrm{min}\le \omega_\mathrm{i}\le\omega_\mathrm{max}
+			$$		</math>
+	</g>
+</svg>
