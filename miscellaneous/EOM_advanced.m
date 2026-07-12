@@ -14,7 +14,7 @@ R_phi = [1     0         0
 
 R_rate = [1  sin(phi)*tan(theta) cos(phi)*tan(theta)
           0        cos(phi)           -sin(phi)
-          0  sin(phi)/cos(theta) cos(phi)/cos(theta)];        % differentiated rotation matrix apparently
+          0  sin(phi)/cos(theta) cos(phi)/cos(theta)];        % differentiated rotation matrix
 
 R_rate_dot = diff(R_rate, phi)*phi_d + diff(R_rate, theta)*theta_d;
 
